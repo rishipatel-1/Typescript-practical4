@@ -5,9 +5,21 @@ enum Position {
   End = 'end'
 }
 
+function logRender(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+  const originalRender = descriptor.value;
+
+  descriptor.value = function(item: HasFormatter, heading: string, pos: Position) {
+    console.log(`Rendering item with heading "${heading}" at position "${pos}"`);
+    originalRender.call(this, item, heading, pos);
+  }
+
+  return descriptor;
+}
+
 export class ListTemplate {
   constructor(private container: HTMLUListElement){}
 
+  @logRender
   render(item: HasFormatter, heading: string, pos: Position){
     const li = document.createElement('li');
   
@@ -26,3 +38,5 @@ export class ListTemplate {
     }
   }
 }
+
+
