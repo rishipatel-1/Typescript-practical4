@@ -1,12 +1,19 @@
 
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color:rgb(217, 242, 250);
     margin: 0;
     padding: 0;
+  }
+
+  .main {
+    margin: 15px;
+    font-size: large;
+    color: rgb(110, 110, 110);
   }
   
   .form-container {
