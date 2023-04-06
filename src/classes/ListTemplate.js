@@ -1,6 +1,11 @@
 "use strict";
 exports.__esModule = true;
 exports.ListTemplate = void 0;
+var Position;
+(function (Position) {
+    Position["Start"] = "start";
+    Position["End"] = "end";
+})(Position || (Position = {}));
 var ListTemplate = /** @class */ (function () {
     function ListTemplate(container) {
         this.container = container;
@@ -13,7 +18,7 @@ var ListTemplate = /** @class */ (function () {
         var p = document.createElement('p');
         p.innerText = item.format();
         li.append(p);
-        if (pos === 'start') {
+        if (pos === Position.Start) {
             this.container.prepend(li);
         }
         else {
